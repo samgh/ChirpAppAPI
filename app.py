@@ -7,7 +7,7 @@ app = Flask(__name__)
 def get_new_tweet(tweet):
 	return jsonify( {'tweet' : tweet})
 
-@app.route('/', methods = ['GET'])
+@app.route('/')
 def get_uri():
 	return jsonify({'uri' : url_for('get_new_tweet', tweet="URL_ENCODED_TWEET", _external = True)})
 
