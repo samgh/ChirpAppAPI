@@ -1,11 +1,12 @@
 #!chirpapp/bin/python
 from flask import Flask, jsonify, url_for
+import shorten
 
 application = Flask(__name__)
 
 @application.route('/chirpapp/api/v1.0/<string:tweet>', methods = ['GET'])
 def get_new_tweet(tweet):
-	return jsonify( {'tweet' : tweet})
+	return jsonify( {'tweet' : shorten.shorten(tweet)})
 
 @application.route('/')
 def get_uri():
