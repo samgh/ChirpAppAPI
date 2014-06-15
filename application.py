@@ -1,5 +1,5 @@
 #!chirpapp/bin/python
-from flask import Flask, jsonify, url_for
+from flask import Flask, jsonify, url_for, make_response
 import shorten
 
 application = Flask(__name__)
@@ -17,4 +17,4 @@ def not_found(error):
     return make_response(jsonify( { 'error': 'Not found' } ), 404)
 
 if __name__ == '__main__':
-	application.run(host='0.0.0.0', debug=True)
+	application.run(host='0.0.0.0', debug=False)

@@ -7,6 +7,7 @@ def contains(s):
 	return -1
 
 def shorten(tweet):
+	if (len(tweet) == 0): return tweet
 	tweet = " ".join(tweet.strip().split())
 	for i in range (0, len(data.phrases)):
 		case_insensitive_phrase = re.compile(re.escape(data.phrases[i]), re.IGNORECASE)
