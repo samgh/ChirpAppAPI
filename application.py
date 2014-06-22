@@ -6,14 +6,14 @@ application = Flask(__name__)
 
 @application.route('/chirpapp/api/v1.0/tweet', methods = ['POST'])
 def get_new_tweet():
-	if not request.json or not 'tweet' in request.json:
-		abort(400)
-	tweet = request.json['tweet']
-	return jsonify({'tweet' : shorten.shorten(tweet)}), 201
+	#if not request.json or not 'tweet' in request.json:
+	#	abort(400)
+	#tweet = request.json['tweet']
+	return jsonify({'tweet' : 'test'}), 201#shorten.shorten(tweet)}), 200
 
 @application.route('/')
 def get_uri():
-	return jsonify({'uri' : url_for('get_new_tweet', tweet="URL_ENCODED_TWEET", _external = True)})
+	return jsonify({'uri' : url_for('get_new_tweet', _external = True)})
 
 @application.errorhandler(404)
 def not_found(error):
