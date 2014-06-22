@@ -1,12 +1,15 @@
 #!chirpapp/bin/python
-from flask import Flask, jsonify, url_for, make_response
+from flask import Flask, jsonify, url_for, make_response, request
 import shorten
 
 application = Flask(__name__)
 
-@application.route('/chirpapp/api/v1.0/<string:tweet>', methods = ['GET'])
-def get_new_tweet(tweet):
-	return jsonify( {'tweet' : shorten.shorten(tweet)})
+@application.route('/chirpapp/api/v1.0/tweet', methods = ['POST'])
+def get_new_tweet():
+	if not request.json or not 'tweet' in request.json:
+		abort(400)
+	tweet = request.json['tweet']
+	return jsonify({'tweet' : shorten.shorten(tweet)}), 201
 
 @application.route('/')
 def get_uri():
