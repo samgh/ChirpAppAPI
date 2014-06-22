@@ -6,10 +6,16 @@ application = Flask(__name__)
 
 @application.route('/chirpapp/api/v1.0/tweet', methods = ['POST'])
 def get_new_tweet():
-	if not request.json or not 'tweet' in request.json:
-		abort(400)
-	tweet = request.json['tweet']
-	return jsonify({'tweet' : shorten.shorten(tweet)}), 201
+#	if not request.json or not 'tweet' in request.json:
+#		abort(400)
+#	tweet = request.json['tweet']
+#	return jsonify({'tweet' : shorten.shorten(tweet)}), 201
+	tweet = ''
+	if not request.json:
+		tweet = 'not request.json'
+	if not 'tweet' in request.json:
+		tweet = 'not "tweet" in request.json'
+	return jsonify({'tweet' : tweet}), 201
 
 @application.route('/')
 def get_uri():
