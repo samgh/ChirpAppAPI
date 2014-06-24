@@ -37,7 +37,7 @@ def get_new_tweet_verbose():
 	return jsonify({'shorten' : compute.shorten(tweet),
 					'links' : compute.links(tweet),
 					'hashtags' : compute.hashtags(tweet),
-					'mentions' : compute.mentions(tweet) })
+					'mentions' : compute.mentions(tweet) }), 201
 
 @application.errorhandler(404)
 def not_found(error):
